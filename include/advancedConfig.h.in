@@ -1,0 +1,9 @@
+#ifndef __ADVANCED_CONFIG_H__
+#define __ADVANCED_CONFIG_H__
+
+#define advanced_VERSION_MAJOR  @advanced_VERSION_MAJOR@
+#define advanced_VERSION_MINOR  @advanced_VERSION_MINOR@
+
+#cmakedefine USE_DFS
+
+#endif  //__ADVANCED_CONFIG_H__
