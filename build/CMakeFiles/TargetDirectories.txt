@@ -3,6 +3,9 @@ D:/dev/advanced/build/CMakeFiles/advanced.dir
 D:/dev/advanced/build/CMakeFiles/INSTALL.dir
 D:/dev/advanced/build/CMakeFiles/ALL_BUILD.dir
 D:/dev/advanced/build/CMakeFiles/ZERO_CHECK.dir
-D:/dev/advanced/build/CustomDFS/CMakeFiles/CustomDFS.dir
-D:/dev/advanced/build/CustomDFS/CMakeFiles/PACKAGE.dir
-D:/dev/advanced/build/CustomDFS/CMakeFiles/INSTALL.dir
+D:/dev/advanced/build/Libraries/CustomDFS/CMakeFiles/CustomDFS.dir
+D:/dev/advanced/build/Libraries/CustomDFS/CMakeFiles/PACKAGE.dir
+D:/dev/advanced/build/Libraries/CustomDFS/CMakeFiles/INSTALL.dir
+D:/dev/advanced/build/Libraries/Combinatory/CMakeFiles/Combinatory.dir
+D:/dev/advanced/build/Libraries/Combinatory/CMakeFiles/PACKAGE.dir
+D:/dev/advanced/build/Libraries/Combinatory/CMakeFiles/INSTALL.dir

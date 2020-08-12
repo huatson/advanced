@@ -1,7 +1,6 @@
 #include <iostream>
 #include "advancedConfig.h"
 
-#include <bits/stdc++.h>
 #include <vector>
 
 #ifdef USE_DFS
@@ -57,19 +56,42 @@ bool compareLists()
 			continue;
 		}
 		out.push_back(j);
-		/**
-		else
-		{
-
-			// solo existe A o B solamente
-			if (countera[j] == 1 && counterb[j] == 0
-				|| countera[j] == 0 && counterb[j] == 1)
-			{
-				out.push_back(j);
-			}
-			**/
 	}
 	return true;
+}
+
+/**
+ * target = 8
+ * 
+ * a=[1,2,3,9]
+ * 
+ * 1+2 == 8 --> false
+ * 1+3 == 8 --> false
+ * 1+9 == 8 --> false
+ * 
+ * 2+3 == 8 --> false
+ * 2+9 == 8 --> false
+ * 
+ * 3+9 == 8 --> false
+ * 
+ * b=[1,2,4,4]
+ * 
+ * 1+2 == 8 --> false
+ * 1+4 == 8 --> false
+ * 1+4 == 8 --> false
+ * 
+ * 2+4 == 8 --> false
+ * 2+4 == 8 --> false
+ * 
+ * 4+4 == 8 --> true
+ * 
+**/
+bool comparesum(vector<int> &list, int target)
+{
+	//int a[]={ 1, 8, 9, 20 };
+	//int b[]={ 5, 8, 20, 1 };
+
+	return false;
 }
 
 int main()

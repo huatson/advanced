@@ -28,6 +28,8 @@
 #include <string>
 #include <algorithm>
 #include <fstream>
+#include <sstream>
+#include <queue>
 
 using namespace std;
 
@@ -71,7 +73,11 @@ class CustomDFS
 public:
 	CustomDFS();
 	~CustomDFS();
-	TreeNode *createTreeNode();
+
+	void removeBrackets(string &inputData);
+	string getInputData(const char *filepath);
+	TreeNode *createTreeNode(const char *filepath);
+
 	vector<vector<int>> levelOrder(TreeNode* root);
 
 };

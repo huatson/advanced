@@ -5,5 +5,6 @@
 #define advanced_VERSION_MINOR  0
 
 #define USE_DFS
+#define USE_COMBINATORY
 
 #endif  //__ADVANCED_CONFIG_H__

@@ -5,12 +5,18 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 option(USE_DFS "Use custom DFS algorithm" ON)
+option(USE_COMBINATORY "Use internal combinatory algorithm" ON)
 
 configure_file(include/advancedConfig.h.in advancedConfig.h)
 
 if(USE_DFS)
-    add_subdirectory(CustomDFS)
+    add_subdirectory(Libraries/CustomDFS)
     list(APPEND EXTRA_LIBS CustomDFS)
+endif()
+
+if(USE_COMBINATORY)
+    add_subdirectory(Libraries/Combinatory)
+    list(APPEND EXTRA_LIBS Combinatory)
 endif()
 
 set(SOURCE src/advanced.cpp)

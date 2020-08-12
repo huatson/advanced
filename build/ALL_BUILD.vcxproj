@@ -169,7 +169,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\dev\advanced\build\CustomDFS\CustomDFS.vcxproj">
+    <ProjectReference Include="D:\dev\advanced\build\Libraries\Combinatory\Combinatory.vcxproj">
+      <Project>{47F9DE98-77C6-3E56-A6CD-98470C6349A5}</Project>
+      <Name>Combinatory</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\advanced\build\Libraries\CustomDFS\CustomDFS.vcxproj">
       <Project>{4ED56DDE-2408-3680-9B3A-3706A747EEE5}</Project>
       <Name>CustomDFS</Name>
     </ProjectReference>
