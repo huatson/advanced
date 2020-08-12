@@ -7,7 +7,9 @@
 #include "CustomDFS.h"
 #endif
 
-
+#ifdef USE_COMBINATORY
+#include "Combinatory.h"
+#endif
 
 bool solveDFS()
 {
@@ -35,20 +37,20 @@ bool solveDFS()
 
 bool compareLists()
 {
-	int a[]={ 1, 8, 9, 20 };
-	int b[]={ 5, 8, 20, 1 };
+	int a[] = {1, 8, 9, 20};
+	int b[] = {5, 8, 20, 1};
 	std::vector<int> out;
 	// contador de lista a
-	int countera[21]={ 0 };
+	int countera[21] = {0};
 	// contador de lista b
-	int counterb[21]={ 0 };
-	for (unsigned int i=0;i<4;i++)
+	int counterb[21] = {0};
+	for (unsigned int i = 0; i < 4; i++)
 	{
 		countera[a[i]]++;
 		counterb[b[i]]++;
 	}
 
-	for (unsigned int j=0;j<21;j++)
+	for (unsigned int j = 0; j < 21; j++)
 	{
 		//	excluir coincidencias o no existentes
 		if ((countera[j] == 1 && counterb[j] == 1) || (countera[j] == 0 && counterb[j] == 0))
@@ -65,6 +67,8 @@ bool compareLists()
  * 
  * a=[1,2,3,9]
  * 
+ * nCr --> n = 4, r = 2
+ * [1+2] --> combinacion
  * 1+2 == 8 --> false
  * 1+3 == 8 --> false
  * 1+9 == 8 --> false
@@ -85,19 +89,81 @@ bool compareLists()
  * 
  * 4+4 == 8 --> true
  * 
+ * example:
+ * vector<int> listA = {1,2,3,9};
+ * vector<int> listB = {1,2,4,4};
 **/
-bool comparesum(vector<int> &list, int target)
+#define TARGET 8
+vector<int> c;
+bool result = false;
+int counter = 0;
+bool testSum(vector<int> &c)
 {
-	//int a[]={ 1, 8, 9, 20 };
-	//int b[]={ 5, 8, 20, 1 };
-
+	int sum = 0;
+	for(int k=0;k<c.size();++k)
+	{
+		sum+=c[k];
+	}
+	if(sum == TARGET)
+	{
+		return true;
+	}
 	return false;
+}
+void comparesum(vector<int> &list, int stride, int r)
+{
+	// nCr: Si n = #total de elementos en una lista (n=4),
+	// y r = #elementos de la lista n, que tiene que contener cada k-combinacion (r=2)
+	// Entonces: Si solo cada combinacion va contener r elementos, entonces,
+	// N-1 es la cantidad de combinaciones que pueden existir.
+	// stride: cual es el valor que tengo que agregar a la combinacion actual, comenzando desde
+	// el primer elemento de la lista.
+	if (r == 0)
+	{
+		// temp log
+		cout << "#" << counter << " " << c[0] << ", " << c[1] << endl;
+		counter++;
+		// r=0: no hay mas elementos pendientes por entrar a la combinacion, comparar valores 
+		// si la suma de 'ambos' elementos en la combinacion es igual al TARGET, return true
+		if(testSum(c))
+		{
+			result = true;
+		}
+		return;
+	}
+	for (int i = stride; i <= list.size() - 1; ++i)
+	{
+		c.push_back(list[i]);
+		comparesum(list, i + 1, r - 1);
+		c.pop_back();
+	}
 }
 
 int main()
 {
-	if (!compareLists())
-		return EXIT_SUCCESS;
-	else
-		return EXIT_FAILURE;
+	vector<int> c;
+	vector<int> list = {1, 2, 3, 9};
+	comparesum(list, 0, 2);
+	if (result)
+	{
+		cout << "TRUE" << endl;
+		
+	}else
+	{
+		cout << "FALSE" << endl;
+	}
+	counter = 0;
+	list.clear();
+	c.clear();
+	list = {1, 2, 4, 4};
+	comparesum(list, 0, 2);
+	if (result)
+	{
+		cout << "TRUE" << endl;
+		
+	}else
+	{
+		cout << "FALSE" << endl;
+	}
+	return EXIT_SUCCESS;
 }

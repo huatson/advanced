@@ -23,6 +23,20 @@ public:
 	Combinatory();
 	~Combinatory();
 
+	// from nCr expression n combinations of r
+	void create(int N, int r);
+
+	void iterate(vector<int> &rndList, int offset, int r);
+
+	void logIteration(const vector<int> &combinatory);
+
+	void runExample();
+
+	vector<int> list;
+	vector<int> combinatoryList;
+
+	int localCounter;
+
 };
 
 #endif  //__COMBINATORY_H__

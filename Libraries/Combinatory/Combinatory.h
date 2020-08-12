@@ -23,6 +23,22 @@ public:
 	Combinatory();
 	~Combinatory();
 
+	// from nCr expression n combinations of r
+	void create(int N, int r);
+
+	void recursive(vector<int> &rndList, int stride, int r);
+
+	bool testSum(const vector<int> &combinatory);
+	void logIteration(const vector<int> &combinatory);
+
+	void runExample();
+
+	vector<int> list;
+	vector<int> combinatoryList;
+
+	int localCounter;
+	int target;
+
 };
 
 #endif  //__COMBINATORY_H__
