@@ -100,11 +100,11 @@ int counter = 0;
 bool testSum(vector<int> &c)
 {
 	int sum = 0;
-	for(int k=0;k<c.size();++k)
+	for (int k = 0; k < c.size(); ++k)
 	{
-		sum+=c[k];
+		sum += c[k];
 	}
-	if(sum == TARGET)
+	if (sum == TARGET)
 	{
 		return true;
 	}
@@ -123,9 +123,9 @@ void comparesum(vector<int> &list, int stride, int r)
 		// temp log
 		cout << "#" << counter << " " << c[0] << ", " << c[1] << endl;
 		counter++;
-		// r=0: no hay mas elementos pendientes por entrar a la combinacion, comparar valores 
+		// r=0: no hay mas elementos pendientes por entrar a la combinacion, comparar valores
 		// si la suma de 'ambos' elementos en la combinacion es igual al TARGET, return true
-		if(testSum(c))
+		if (testSum(c))
 		{
 			result = true;
 		}
@@ -138,8 +138,7 @@ void comparesum(vector<int> &list, int stride, int r)
 		c.pop_back();
 	}
 }
-
-int main()
+void exec_comparesum()
 {
 	vector<int> c;
 	vector<int> list = {1, 2, 3, 9};
@@ -147,8 +146,8 @@ int main()
 	if (result)
 	{
 		cout << "TRUE" << endl;
-		
-	}else
+	}
+	else
 	{
 		cout << "FALSE" << endl;
 	}
@@ -160,10 +159,50 @@ int main()
 	if (result)
 	{
 		cout << "TRUE" << endl;
-		
-	}else
+	}
+	else
 	{
 		cout << "FALSE" << endl;
 	}
+}
+
+bool comparetwonumbers(vector<int> &list, int target, int results[2])
+{
+	for (int i = 0; i < list.size(); ++i)
+	{
+		for (int j = i + 1; j < list.size(); ++j)
+		{
+			const int a = list[i];
+			const int b = list[j];
+			const int sum = a + b;
+			if (sum == target)
+			{
+				results[0] = a;
+				results[1] = b;
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+void exec_comparetwonumbers()
+{
+	vector<int> list = {1, 2, 3, 9};
+	int results[] = {0, 0};
+	bool founded = comparetwonumbers(list, 8, results);
+	if (founded)
+	{
+		cout << "founded in " << results[0] << ", " << results[1] << endl;
+	}
+	else
+	{
+		cout << "not founded!" << endl;
+	}
+}
+
+int main()
+{
+	exec_comparetwonumbers();
 	return EXIT_SUCCESS;
 }
