@@ -11,6 +11,8 @@
 #include "Combinatory.h"
 #endif
 
+#include <unordered_map>
+
 bool solveDFS()
 {
 	cout << "init stuff\n";
@@ -166,7 +168,7 @@ void exec_comparesum()
 	}
 }
 
-bool comparetwonumbers(vector<int> &list, int target, int results[2])
+bool comparetwonumbers_itr(vector<int> &list, int target, int results[2])
 {
 	for (int i = 0; i < list.size(); ++i)
 	{
@@ -185,12 +187,11 @@ bool comparetwonumbers(vector<int> &list, int target, int results[2])
 	}
 	return false;
 }
-
 void exec_comparetwonumbers()
 {
 	vector<int> list = {1, 2, 3, 9};
 	int results[] = {0, 0};
-	bool founded = comparetwonumbers(list, 8, results);
+	bool founded = comparetwonumbers_itr(list, 8, results);
 	if (founded)
 	{
 		cout << "founded in " << results[0] << ", " << results[1] << endl;
@@ -201,8 +202,102 @@ void exec_comparetwonumbers()
 	}
 }
 
+void exec_printfrequencies()
+{
+	/**
+	 * given a string of words, find frequencies of individual words.
+	 * */
+	const string str = "repeat after repeat word and another word";
+	stringstream ss(str);
+	unordered_map<string, int> mapWords;
+	string aWord;
+	while (ss >> aWord)
+	{
+		mapWords[aWord]++;
+	}
+	for (unordered_map<string, int>::iterator wordItr = mapWords.begin(); wordItr != mapWords.end(); ++wordItr)
+	{
+		cout << wordItr->first << " " << wordItr->second << endl;
+	}
+}
+void unorderedMapExamples()
+{
+	/**
+	 * declaring map of type <string, int>
+	 * */
+	unordered_map<string, int> str2IntMap;
+	// insert values
+	str2IntMap["valueoften"] = 10;
+	str2IntMap["valueoftwenty"] = 20;
+	str2IntMap["valueofthirteen"] = 30;
+	// traversing the map
+	for (auto x : str2IntMap)
+	{
+		cout << x.first << " " << x.second << endl;
+	}
+	/**
+	 * declaring map of type <string, float>
+	 * */
+	unordered_map<string, float> str2FloatMap;
+	// insert values
+	str2FloatMap["PI"] = 3.1416f;
+	str2FloatMap["root2"] = 1.414f;
+	str2FloatMap["root3"] = 1.732f;
+	str2FloatMap["log10"] = 2.302f;
+	str2FloatMap["logE"] = 1.0f;
+	//other insert method
+	str2FloatMap.insert(make_pair("e", 2.718f));
+	// test strings
+	string keyPI = "PI";
+	string keyLambda = "lambda";
+	// if key not found in map iterator to end is return
+	if (str2FloatMap.find(keyPI) == str2FloatMap.end())
+	{
+		cout << "\nNot founded: " << keyPI << endl;
+	}
+	else
+	{
+		cout << "\nFounded: " << keyPI << endl;
+	}
+	if (str2FloatMap.find(keyLambda) == str2FloatMap.end())
+	{
+		cout << "\nNot founded: " << keyLambda << endl;
+	}
+	else
+	{
+		cout << "\nFounded: " << keyLambda << endl;
+	}
+	// iterate over all map
+	cout << "All Elements:\n";
+	for (unordered_map<string, float>::iterator itrMap = str2FloatMap.begin(); itrMap != str2FloatMap.end(); ++itrMap)
+	{
+		cout << itrMap->first << " " << itrMap->second << endl;
+	}
+}
+
+bool exec_comparetwonummap(vector<int> &list, const int target)
+{
+	unordered_map<int, int> mapList;
+	for (int i = 0; i < list.size(); ++i)
+	{
+		int valueKey = (list[i] - target) * -1;
+		if (mapList.find(valueKey) == mapList.end())
+		{
+			//mapList.insert(list[i],list[i]-target);
+			mapList[list[i]] = valueKey;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 int main()
 {
-	exec_comparetwonumbers();
+	int target = 8;
+	vector<int> list = {1, 2, 4, 4};
+	const bool founded = exec_comparetwonummap(list, target);
 	return EXIT_SUCCESS;
 }
