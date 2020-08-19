@@ -10,7 +10,8 @@
 			"type_traits": "cpp",
 			"vector": "cpp",
 			"iosfwd": "cpp",
-			"iostream": "cpp"
+			"iostream": "cpp",
+			"ostream": "cpp"
 		}
 	}
 }
