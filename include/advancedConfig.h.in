@@ -1,6 +1,10 @@
 #ifndef __ADVANCED_CONFIG_H__
 #define __ADVANCED_CONFIG_H__
 
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #define advanced_VERSION_MAJOR  @advanced_VERSION_MAJOR@
 #define advanced_VERSION_MINOR  @advanced_VERSION_MINOR@
 
